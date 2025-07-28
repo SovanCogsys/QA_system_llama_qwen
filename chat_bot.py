@@ -90,7 +90,7 @@ class QwenEmbeddingWrapper(Embeddings):
 
     def embed_query(self, text):
         # Add task instruction for query embedding
-        formatted = f"Instruct: {self.task}\nQuery:{text}"
+        formatted = text
         return self._embed([formatted])[0]
 
 
@@ -154,7 +154,7 @@ def extract_columns(pdf_path):
 # %%
 # texts = [doc.page_content for doc in chunks]
 # metadatas = [doc.metadata for doc in chunks]
-task = "Given a web search query, retrieve relevant passages that answer the query"
+# task = "Given a web search query, retrieve relevant passages that answer the query"
 
 embedding = QwenEmbeddingWrapper(model_id="Qwen/Qwen3-Embedding-8B", task=task)
 # print(type(embedding))
